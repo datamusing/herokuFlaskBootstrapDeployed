@@ -1,0 +1,41 @@
+{% extends 'recoLayout.jinja2.html' %}
+{% from 'util.jinja2.html' import link_tag, js_tag %}
+
+{% block title %}Rate it and get it!{% endblock %}
+
+{% block css %}
+        {{ link_tag('main') }}
+{% endblock %}
+{% block body %}
+<p class='lead'  > Hello, {{uname}}! <p>
+<p class = 'text-info'>
+ First, let's get started with some ratings from you. <br> 
+ If you have not seen a movie, just skip 
+ it by pressing the submit button. 
+</p>
+
+
+
+<form method='POST'>
+  <fieldset>
+    <legend>{{movie.title}}</legend>
+    
+    <div id="star"></div>
+     
+    <label>Your Rating</label>
+     <div class="form-actions">
+	 <button type="submit" class="btn btn-primary" > Submit</button>
+</fieldset>	
+  </form>
+
+  <script type="text/javascript">
+   	   	 $('#star').raty({ path: '/static/css/img/', scoreName: "{{movie.title}}",score:0,cancel:true});
+   </script>
+
+{% if enough %}
+<a class="btn" href="/reco/">Recommendations</a>
+{% endif %}
+
+{% endblock %}
+{% block bodyext %}
+{% endblock %}

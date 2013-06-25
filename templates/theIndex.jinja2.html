@@ -1,0 +1,23 @@
+{% extends 'recoLayout.jinja2.html' %}
+{% from 'util.jinja2.html' import link_tag, js_tag %}
+
+{% block title %}Rate it and get it!{% endblock %}
+
+{% block css %}
+        {{ link_tag('main') }}
+{% endblock %}
+{% block body %}
+<form method="POST">
+  <fieldset>
+    <legend>To begin, let us know what you want us to call you by?</legend>
+    <label>Nickname</label>
+     <div class="controls">
+    <input type="text"  name="uname" value = "{{request.form['uname']}}" placeholder="Ebert"> 
+	</div>
+    <div class="form-actions">
+     <button type="submit" class="btn btn-primary">Submit</button>
+  </fieldset>
+</form>
+{% endblock %}
+{% block bodyext %}
+{% endblock %}

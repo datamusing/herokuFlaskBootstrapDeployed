@@ -1,0 +1,32 @@
+{% extends 'myindex.jinja2.html' %}
+{% from 'util.jinja2.html' import link_tag, js_tag %}
+
+{% block title %}Rate it and get it!{% endblock %}
+
+{% block css %}
+        {{ link_tag('main') }}
+{% endblock %}
+{% block body %}
+<p class='text-success' > Great,  {{uname}}. 
+	Based on your ratings, here is a list of recommended movies. 
+</p>
+ <table class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Predicted Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                	 {% for row in rows %}
+            			<tr>
+                            <td><span class="label label-important">{{row.title}}</span></td>
+                            <td><span class="label">{{row.prediction}}</span></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+<!-- {% endblock %}
+{% block js %}
+{{ script_tag('animation') }}
+{% endblock %} -->

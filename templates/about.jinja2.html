@@ -1,0 +1,47 @@
+{% extends 'recoLayout.jinja2.html' %}
+{% from 'util.jinja2.html' import link_tag, js_tag %}
+
+{% block title %}About this page{% endblock %}
+
+{% block css %}
+        {{ link_tag('main') }}
+{% endblock %}
+
+{% block body%}
+
+<p  class='lead'> Movie Recommendation Engine based on  the MovieLens dataset. </p>
+
+<dl class="dl-horizontal">
+	<dt>
+		The data set
+	</dt>	
+	<dd> 
+		We use the archival 1 million MovieLens movie rating  data set from <a href="http://www.grouplens.org/node/73"> Grouplens </a> Research. 
+	</dd>
+	<dt>
+		Data Wrangling
+	</dt>
+	<dd>
+		Cleaning, filtering, joining, etc  of data sets  were done using the <a hrref="http://pandas.pydata.org/">Pandas</a> Python library by Wes McKinney.  The iPython notebook used in the project can be viewed <a href="http://nbviewer.ipython.org/5436638" target="_blank"> here </a>
+	</dd>
+	<dt>
+		Algorithm 		
+	</dt>
+	<dd>
+		We use item-based collaborative filtering for recommending movies based on the ratings provided by 
+		the website visitor. We use the  <i>adjusted cosine similarity function </i> from <a href="http://www.ra.ethz.ch/cdstore/www10/papers/pdf/p519.pdf" target="_blank"> Sarwar et. al </a>, which has been tested to provide the lowest MAE among several correlation measures explored by the authors. <br> To build the smilarity matrix, we used Numpy and <a href="http://www.scipy.org/" target="_blank"> Scipy </a> along with Pandas. The simiilarity table was built with distributed computing to minimize run time. For easily querying the table, so that instant recoomendations could be generated the table is stored in a <a href="http://www.mongodb.org/"> MongoDB database </a>.
+	</dd>
+	<dt>
+		The app 
+	</dt>
+	<dd>
+		I used the python based  <a href http://flask.readthedocs.org/en/latest/api/#flask.g> Flask </a> framework to build the app. Rating stars were renedered with the <a href="https://github.com/wbotelhos/raty"> raty </a> javascript plugin.  I used Jinja2 templating combined with <a href = "http://twitter.github.io/bootstrap/">Twitter Bootstrap </a>  to style the pages. (I rewrote the Python recommendation  function in the notebook 
+		to run off of  the MongoDB database rather than a python pickle file.)
+	</dd>
+</dl>
+
+<i class="icon-leaf"></i>  Deep
+<i class="icon-envelope"></i> <a href:mail-to> datamusing@gmail.com</a>
+<a href="https://twitter.com/datamusing" class="twitter-follow-button" data-show-count="false">Follow @datamusing</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+{% endblock %}

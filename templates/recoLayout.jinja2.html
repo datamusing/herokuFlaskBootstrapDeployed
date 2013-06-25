@@ -1,0 +1,45 @@
+{% from 'util.jinja2.html' import link_tag, script_tag, tracked_link %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}{% endblock %}</title>
+
+        {{ link_tag('lib/bootstrap') }}
+        {{ link_tag('lib/bootstrap-responsive') }}
+
+        {% block css %}
+        {% endblock %}
+        {{ script_tag('lib/jquery') }}
+        {{ script_tag('lib/bootstrap') }}
+        {{ script_tag('lib/jquery.raty.min') }}
+        {% block js %}
+        {% endblock %}
+
+    </head>
+    <body>
+
+        <div class="container">
+            <!-- <bootstrap> -->
+
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <a class="brand hidden-phone">Recommend Movies</a>
+                    <a class="brand visible-phone">RM</a>
+                    <ul class="nav">
+                        <li class="{{ page_reco }}"><a href="/">Get Reco</a></li>
+                        <li class="{{ page_about }}"><a href="/about">About</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            {% block body %}
+            {% endblock %}
+
+            <!-- </bootstrap> -->
+        </div>
+
+        
+
+    </body>
+</html>

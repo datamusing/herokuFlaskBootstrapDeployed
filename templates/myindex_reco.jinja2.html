@@ -1,0 +1,35 @@
+{% extends 'myindex.jinja2.html' %}
+{% from 'util.jinja2.html' import link_tag, js_tag %}
+
+{% block title %}Rate it and get it!{% endblock %}
+
+{% block css %}
+        {{ link_tag('main') }}
+{% endblock %}
+{% block body %}
+<p class='lead' >  Great, {{uname}}! 
+<p class = text-error> Now,
+	that you have rated more than 20 movies, 
+	we can generate some recommendations for you.  
+  <br>
+ 	You can continue to rate more movies to improve 
+ 	your recommendations, or you can press the recommendation 
+ 	button.  
+</p>
+<form method='POST'>
+  <fieldset>
+    <legend>{{movie.title}}</legend>
+    <div id="star"></div>
+     
+    <label>Your Rating</label>
+     <div class="form-actions">
+	 <button type="submit" class="btn btn-primary"> Submit</button>
+</fieldset>	
+  </form>
+
+  <script type="text/javascript">
+   	   	 $('#star').raty({ path: '/static/css/img/', scoreName: "{{movie.title}}",score:0, cancel:true});
+   </script>
+
+<a class="btn" href="/reco/">Recommendations</a>
+{% endblock %}
